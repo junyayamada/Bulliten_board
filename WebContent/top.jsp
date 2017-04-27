@@ -89,7 +89,8 @@
 		<br/>
 
 
-		<c:forEach items="${comments}" var="comments">
+		<c:forEach items="${comments}" var="comment">
+		    <c:if test="${ message.id == comment.messageId }">
 
 			<div class="comments">
 				<div class="commentText">
@@ -112,6 +113,7 @@
 				</form>
 		    </div><br/>
 
+		    </c:if>
 		</c:forEach>
 
 		<div class="form-area">

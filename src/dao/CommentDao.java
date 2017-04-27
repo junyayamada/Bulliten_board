@@ -36,7 +36,7 @@ public class CommentDao {
 			ps.setString(1, comment.getText());
 			ps.setInt(2, comment.getUserId());
 			ps.setInt(3, comment.getMessageId());
-			ps.executeUpdate();
+			ps.executeUpdate(); //insert_date
 
 		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
@@ -46,7 +46,7 @@ public class CommentDao {
 	}
 
 
-	public List<Comment> getUserComment(Connection connection) {
+	public List<Comment> getUserComment(Connection connection) {//コメント
 
 		PreparedStatement ps = null;
 		try {
@@ -85,7 +85,6 @@ public class CommentDao {
 			message.setMessageId(message_id);
 			message.setCreatedAt(created_at);
 
-			ret.add(message);
 			ret.add(message);
 		}
 		return ret;
@@ -130,3 +129,53 @@ public class CommentDao {
 	}
 }
 
+
+
+
+//package dao;
+//
+//import static utils.CloseableUtil.*;
+//
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
+//import java.sql.SQLException;
+//import java.sql.Timestamp;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//import beans.Comment;
+//import exception.SQLRuntimeException;
+//
+//public class CommentDao {
+//
+//
+//
+//
+//
+//
+//	private Timestamp toCreatedAtList1(ResultSet rs)throws SQLException {
+//
+//		try {
+//			while (rs.next()) {
+//				return rs.getTimestamp("created_at");
+//			}
+//			return null;
+//		} finally {
+//			close(rs);
+//		}
+//	}
+//
+//	private Timestamp toCreatedAtList2(ResultSet rs)throws SQLException {
+//
+//		try {
+//			while (rs.next()) {
+//				return rs.getTimestamp("created_at");
+//			}
+//			return null;
+//		} finally {
+//			close(rs);
+//		}
+//	}
+//
+//
