@@ -28,11 +28,11 @@ public class CommentServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
-		List<String> errormessages = new ArrayList<String>();
-		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8"); //リクエストボディ(POSTメソッドはこの中)に含まれるデータの文字コードを指定した値に書き換える
+		List<String> errorMessages = new ArrayList<String>();
+		HttpSession session = request.getSession(); //セッションを取得
 
-		if (isValid(request, errormessages)) {
+		if (isValid(request, errorMessages)) {
 
 			Comment text = new Comment();
 			User user = (User) session.getAttribute("loginUser");
@@ -44,12 +44,12 @@ public class CommentServlet extends HttpServlet {
 
 			response.sendRedirect("./");
 		} else {
-			session.setAttribute("errorMessages", errormessages);
+			session.setAttribute("errorMessages", errorMessages);
 			response.sendRedirect("./");
 		}
 	}
 
-	private boolean isValid(HttpServletRequest request, List<String>errormessages) {
+	private boolean isValid(HttpServletRequest request, List<String>errormessages) { //入力値チェック
 
 		String text = request.getParameter("text");
 

@@ -94,13 +94,10 @@
 			<div class="comments">
 				<div class="commentText">
 				    コメント:<c:out value="${comment.text}" /></div><br/>
-					</div><br/>
 				<div class="commenter">
 					投稿者:<c:out value="${ comment.name }" /></div><br/>
 				<div class="commentTime">
-					<fmt:formatDate value="${ comment.createdAt }" pattern="yyyy/MM/dd HH:mm:ss" />
-				</div>
-				<br/>
+					<fmt:formatDate value="${ comment.createdAt }" pattern="yyyy/MM/dd HH:mm:ss" /></div><br/>
 				<div class="commentDelete">
 				<form action="deletecomment" method="post" onSubmit="return stop()">
 					<input type="hidden" name="comment.id" value="${ comment.id }"></input>

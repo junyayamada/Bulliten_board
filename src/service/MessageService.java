@@ -61,7 +61,7 @@ public class MessageService {
 	}
 
 
-	public List<UserMessage> getMessage() {//投稿
+	public List<UserMessage> getMessage() {
 
 		Connection connection = null;
 		try {
@@ -82,54 +82,9 @@ public class MessageService {
 			close(connection);
 		}
 	}
-	public List<UserMessage> getMessage(String start, String end, String category) {//投稿
-
-		Connection connection = null;
-		try {
-			connection = getConnection();
-
-			UserMessageDao messageDao = new UserMessageDao();
-			List<UserMessage> ret = messageDao.getUserMessages(connection, start, end, category);
-
-			commit(connection);
-			return ret;
-		} catch (RuntimeException e) {
-			rollback(connection);
-			throw e;
-		} catch (Error e) {
-			rollback(connection);
-			throw e;
-		} finally {
-			close(connection);
-		}
-	}
-
-	public List<UserMessage> getMessageCategory() { //カテゴリ
-
-		Connection connection = null;
-
-		try {
-			connection = getConnection();
-
-			UserMessageDao messageDao = new UserMessageDao();
-			List<UserMessage> ret = messageDao.getUserMessage(connection);
-
-			commit(connection);
-
-			return ret;
-		} catch (RuntimeException e) {
-			rollback(connection);
-			throw e;
-		} catch (Error e) {
-			rollback(connection);
-			throw e;
-		} finally {
-			close(connection);
-		}
-	}
 
 
-	public void delete(Message messages) { //削除
+	public void delete(Message messages) {
 
 		Connection connection = null;
 		try {
