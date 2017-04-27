@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import beans.Comment;
+import beans.UserComment;
 import dao.CommentDao;
+import dao.UserCommentDao;
 
 public class CommentService {
 
@@ -33,14 +35,14 @@ public class CommentService {
 	}
 
 
-	public List<Comment> getComment() {
+	public List<UserComment> getComment() {
 
 		Connection connection = null;
 		try {
 			connection = getConnection();
 
-			CommentDao commentDao = new CommentDao();
-			List<Comment> ret = commentDao.getUserComment(connection);
+			UserCommentDao commentDao = new UserCommentDao();
+			List<UserComment> ret = commentDao.getUserComment(connection);
 
 			commit(connection);
 			return ret;
@@ -85,7 +87,7 @@ public class CommentService {
 		try {
 			connection = getConnection();
 
-			CommentDao commentDao = new CommentDao();
+			UserCommentDao commentDao = new UserCommentDao();
 			commentDao.getDelete(connection, comments);
 
 			commit (connection);

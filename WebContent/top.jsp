@@ -90,7 +90,7 @@
 
 
 		<c:forEach items="${comments}" var="comment">
-		    <c:if test="${ message.id == comment.messageId }">
+		    <c:if test="${ message.id == comment.message_id }">
 
 			<div class="comments">
 				<div class="commentText">
@@ -98,7 +98,7 @@
 				<div class="commenter">
 					投稿者:<c:out value="${ comment.name }" /></div><br/>
 				<div class="commentTime">
-					<fmt:formatDate value="${ comment.createdAt }" pattern="yyyy/MM/dd HH:mm:ss" /></div><br/>
+					<fmt:formatDate value="${ comment.created_at }" pattern="yyyy/MM/dd HH:mm:ss" /></div><br/>
 				<div class="commentDelete">
 				<form action="deletecomment" method="post" onSubmit="return stop()">
 					<input type="hidden" name="comment.id" value="${ comment.id }"></input>
@@ -106,7 +106,7 @@
 						<c:when test="${loginUser.branchId == 1 && loginUser.departmentId == 1}">
 							<input  class="commentDelete" type="submit" value="削除"></input>
 						</c:when>
-						<c:when test="${loginUser.id == comment.userId}">
+						<c:when test="${loginUser.id == comment.user_id}">
 							<input  class="commentDelete" type="submit" value="削除"></input>
 						</c:when>
 					</c:choose>

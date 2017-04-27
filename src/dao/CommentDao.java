@@ -36,7 +36,7 @@ public class CommentDao {
 			ps.setString(1, comment.getText());
 			ps.setInt(2, comment.getUserId());
 			ps.setInt(3, comment.getMessageId());
-			ps.executeUpdate(); //insert_date
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			throw new SQLRuntimeException(e);
@@ -51,7 +51,7 @@ public class CommentDao {
 		PreparedStatement ps = null;
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT * FROM comments ");
+			sql.append("SELECT * FROM comments");
 			sql.append("ORDER BY created_at ASC ");
 
 			ps = connection.prepareStatement(sql.toString());
@@ -69,28 +69,28 @@ public class CommentDao {
 
 	public List<Comment> toCommentList (ResultSet rs)throws SQLException {
 	List<Comment> ret = new ArrayList<Comment>();
-	try {
+		try {
 
-		while (rs.next()) {
-			int id = rs.getInt("id");
-			String text = rs.getString("text");
-			int user_id = rs.getInt("user_id");
-			int message_id = rs.getInt("message_id");
-			Timestamp created_at = rs.getTimestamp("created_at");
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String text = rs.getString("text");
+				int user_id = rs.getInt("user_id");
+				int message_id = rs.getInt("message_id");
+				Timestamp created_at = rs.getTimestamp("created_at");
 
-			Comment message = new Comment();
-			message.setId(id);
-			message.setText(text);
-			message.setUserId(user_id);
-			message.setMessageId(message_id);
-			message.setCreatedAt(created_at);
+				Comment message = new Comment();
+				message.setId(id);
+				message.setText(text);
+				message.setUserId(user_id);
+				message.setMessageId(message_id);
+				message.setCreatedAt(created_at);
 
-			ret.add(message);
+				ret.add(message);
+			}
+			return ret;
+		} finally {
+			close(rs);
 		}
-		return ret;
-	} finally {
-		close(rs);
-	}
 	}
 
 
@@ -128,54 +128,3 @@ public class CommentDao {
 		}
 	}
 }
-
-
-
-
-//package dao;
-//
-//import static utils.CloseableUtil.*;
-//
-//import java.sql.Connection;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.sql.Timestamp;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import beans.Comment;
-//import exception.SQLRuntimeException;
-//
-//public class CommentDao {
-//
-//
-//
-//
-//
-//
-//	private Timestamp toCreatedAtList1(ResultSet rs)throws SQLException {
-//
-//		try {
-//			while (rs.next()) {
-//				return rs.getTimestamp("created_at");
-//			}
-//			return null;
-//		} finally {
-//			close(rs);
-//		}
-//	}
-//
-//	private Timestamp toCreatedAtList2(ResultSet rs)throws SQLException {
-//
-//		try {
-//			while (rs.next()) {
-//				return rs.getTimestamp("created_at");
-//			}
-//			return null;
-//		} finally {
-//			close(rs);
-//		}
-//	}
-//
-//

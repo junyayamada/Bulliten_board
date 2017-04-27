@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Comment;
+import beans.UserComment;
 import beans.UserMessage;
 import service.CommentService;
 import service.MessageService;
@@ -25,7 +25,7 @@ public class HomeServlet extends HttpServlet {
 		List<UserMessage> messages = new MessageService().getMessage();
 		request.setAttribute("messages", messages);
 
-		List<Comment> comments = new CommentService().getComment();
+		List<UserComment> comments = new CommentService().getComment();
 		request.setAttribute("comments", comments);
 
 		request.getRequestDispatcher("/top.jsp").forward(request, response);
