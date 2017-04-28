@@ -41,11 +41,11 @@ public class LoginServlet  extends HttpServlet{
 			session.setAttribute("loginUser", users);
 			response.sendRedirect("./");
 		} else {
-			List<String> errormessages = new ArrayList<String>();
+			List<String> errorMessages = new ArrayList<String>();
 			session.removeAttribute("errorMessages");
-			session.setAttribute("errorMessages", errormessages);
+			session.setAttribute("errorMessages", errorMessages);
 
-			errormessages.add("ログインに失敗しました。");
+			errorMessages.add("ログインに失敗しました。");
 
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}

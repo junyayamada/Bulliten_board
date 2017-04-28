@@ -24,7 +24,7 @@ public class DeleteMessageServlet  extends HttpServlet {
 
 	private Message getDeleteMessage(HttpServletRequest request)throws IOException, ServletException {
 		Message status = new Message();
-		status.setUserId(Integer.parseInt(request.getParameter("id")));
+		status.setUserId(Integer.parseInt(request.getParameter("message.id")));
 		return status;
 	}
 }

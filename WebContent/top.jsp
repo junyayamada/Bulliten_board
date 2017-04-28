@@ -77,7 +77,7 @@
 		<form action="deletemessage" method="post" onSubmit="return stop()">
 			<input type="hidden" name="message.id" value="${ message.id }"></input>
 			<c:choose>
-				<c:when test="${loginUser.branchId == 1 && loginUser.departmentId == 1}">
+				<c:when test="${loginUser.branchId == 1 && loginUser.departmentId == 2}">
 					<input  class="messageDelete" type="submit" value="削除"></input>
 				</c:when>
 				<c:when test="${loginUser.id == message.userId}">
@@ -103,7 +103,7 @@
 				<form action="deletecomment" method="post" onSubmit="return stop()">
 					<input type="hidden" name="comment.id" value="${ comment.id }"></input>
 					<c:choose>
-						<c:when test="${loginUser.branchId == 1 && loginUser.departmentId == 1}">
+						<c:when test="${loginUser.branchId == 1 && loginUser.departmentId == 2}">
 							<input  class="commentDelete" type="submit" value="削除"></input>
 						</c:when>
 						<c:when test="${loginUser.id == comment.user_id}">
